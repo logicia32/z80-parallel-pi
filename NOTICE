@@ -1,0 +1,39 @@
+z80-parallel-pi — third-party components
+========================================
+
+This repository bundles one third-party file, used unmodified, under its
+own license. The rest of the repository is original work under MIT (see
+LICENSE).
+
+----------------------------------------------------------------------------
+parallel/shared-memory/z80.h
+----------------------------------------------------------------------------
+A single-header, cycle-stepped Z80 CPU emulator.
+
+    Project: "chips" single-header emulators
+    Author : Andre Weissflog
+    License: zlib/libpng license
+    Copyright (c) 2021 Andre Weissflog
+
+The full license text is preserved verbatim inside z80.h and has not been
+removed or altered, as the zlib license requires. The shared-memory
+experiment (parallel/shared-memory/) instantiates several copies of this
+CPU and wires a bus arbiter, a hardware semaphore, a barrier and an
+IM2 interrupt path around them; that surrounding machine is the original
+work in this repository.
+
+z80.h is the ONLY third-party file. Everything else is original work
+under MIT — including parallel/shared-memory/z80impl.c (a one-line
+CHIPS_IMPL wrapper that just compiles z80.h), cpu.c / mc.c / machine.h /
+t63.c / node_pi2.c, the interrupt-demo files crt0_irq.s / isrdemo.c /
+irq_host.c, and the single shared kernel pi_kernel.h.
+
+Acknowledgment of this emulator is given here as the zlib license
+appreciates. Per the same license, this notice may not be removed from
+source distributions.
+
+----------------------------------------------------------------------------
+Toolchain (not bundled — install your own)
+----------------------------------------------------------------------------
+SDCC and ucsim_z80 are required to build/run the Z80 binaries but are not
+included here. Install them via your distribution or from sdcc.sourceforge.net.
